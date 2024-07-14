@@ -29,28 +29,30 @@
     <attribute name="title">
      <string>Users</string>
     </attribute>
-    <widget class="QTabWidget" name="tabWidget_2">
+    <widget class="QTableWidget" name="tableWidget">
      <property name="geometry">
       <rect>
-       <x>350</x>
-       <y>170</y>
-       <width>681</width>
-       <height>461</height>
+       <x>10</x>
+       <y>10</y>
+       <width>661</width>
+       <height>411</height>
       </rect>
      </property>
-     <property name="currentIndex">
-      <number>0</number>
-     </property>
-     <widget class="QWidget" name="tab_3">
-      <attribute name="title">
-       <string>Users</string>
-      </attribute>
-     </widget>
-     <widget class="QWidget" name="tab_4">
-      <attribute name="title">
-       <string>Appointments</string>
-      </attribute>
-     </widget>
+     <column>
+      <property name="text">
+       <string>username</string>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>age</string>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>type</string>
+      </property>
+     </column>
     </widget>
    </widget>
    <widget class="QWidget" name="tab">

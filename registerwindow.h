@@ -21,7 +21,7 @@ private slots:
 private:
     Ui::RegisterWindow *ui;
     bool userExists(const QString &username);
-    void registerUser(const QString &username, const QString &password, const QString &role);
+    void registerUser(const QString &username, const QString &password, const QString &role, int age);
 };
 
 #endif // REGISTERWINDOW_H

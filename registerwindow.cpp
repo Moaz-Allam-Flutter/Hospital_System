@@ -2,6 +2,7 @@
 #include "ui_registerwindow.h"
 #include <QFile>
 #include <QTextStream>
+#include <QIntValidator>
 
 RegisterWindow::RegisterWindow(QWidget *parent)
     : QDialog(parent)
@@ -25,6 +26,7 @@ void RegisterWindow::on_pushButtonRegister_clicked()
     QString username = ui->lineEditUsername->text();
     QString password = ui->lineEditPassword->text();
     QString retypePassword = ui->lineEditRetypePassword->text();
+    int age = 2024 - ui->lineEditYear->text().toInt();
 
     // Validate input
     if (username.isEmpty() || password.isEmpty() || retypePassword.isEmpty() ||
@@ -53,7 +55,7 @@ void RegisterWindow::on_pushButtonRegister_clicked()
     if (ui->radioButtonDoctor->isChecked()) role = "Doctor";
     else if (ui->radioButtonPatient->isChecked()) role = "Patient";
 
-    registerUser(username, password, role);
+    registerUser(username, password, role, age);
 
     close();
 }
@@ -80,13 +82,13 @@ bool RegisterWindow::userExists(const QString &username)
     return false;
 }
 
-void RegisterWindow::registerUser(const QString &username, const QString &password, const QString &role)
+void RegisterWindow::registerUser(const QString &username, const QString &password, const QString &role, int age)
 {
     QFile file("users.txt");
     if (!file.open(QIODevice::Append | QIODevice::Text))
         return;
 
     QTextStream out(&file);
-    out << username << "," << password << "," << role << "\n";
+    out << username << "," << password << "," << role << "," << age << "\n";
     file.close();
 }

@@ -1,5 +1,3 @@
 Admin,123,Admin
-Moaz,MoazAllam,Doctor
-Ahmed,123,Doctor
-Kiro,123,Doctor
-Karim,456,Patient
+Moaz,MoazAllam,Doctor,22
+Salem,741,Doctor,24

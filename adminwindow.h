@@ -1,11 +1,12 @@
+// adminwindow.h
 #ifndef ADMINWINDOW_H
 #define ADMINWINDOW_H
 
 #include <QDialog>
 
-namespace Ui {
-class AdminWindow;
-}
+QT_BEGIN_NAMESPACE
+namespace Ui { class AdminWindow; }
+QT_END_NAMESPACE
 
 class AdminWindow : public QDialog
 {
@@ -17,6 +18,8 @@ public:
 
 private:
     Ui::AdminWindow *ui;
+
+    void loadUserList();
 };
 
 #endif // ADMINWINDOW_H
