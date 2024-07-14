@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>adminWindow</class>
- <widget class="QDialog" name="adminWindow">
+ <class>AdminWindow</class>
+ <widget class="QDialog" name="AdminWindow">
   <property name="geometry">
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>699</width>
-    <height>483</height>
+    <width>702</width>
+    <height>487</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -25,12 +25,35 @@
    <property name="currentIndex">
     <number>0</number>
    </property>
-   <widget class="QWidget" name="tab_4">
+   <widget class="QWidget" name="tab_2">
     <attribute name="title">
      <string>Users</string>
     </attribute>
+    <widget class="QTabWidget" name="tabWidget_2">
+     <property name="geometry">
+      <rect>
+       <x>350</x>
+       <y>170</y>
+       <width>681</width>
+       <height>461</height>
+      </rect>
+     </property>
+     <property name="currentIndex">
+      <number>0</number>
+     </property>
+     <widget class="QWidget" name="tab_3">
+      <attribute name="title">
+       <string>Users</string>
+      </attribute>
+     </widget>
+     <widget class="QWidget" name="tab_4">
+      <attribute name="title">
+       <string>Appointments</string>
+      </attribute>
+     </widget>
+    </widget>
    </widget>
-   <widget class="QWidget" name="tab_3">
+   <widget class="QWidget" name="tab">
     <attribute name="title">
      <string>Appointments</string>
     </attribute>

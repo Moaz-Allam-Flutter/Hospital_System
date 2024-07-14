@@ -4,19 +4,19 @@
 #include <QDialog>
 
 namespace Ui {
-class adminWindow;
+class AdminWindow;
 }
 
-class adminWindow : public QDialog
+class AdminWindow : public QDialog
 {
     Q_OBJECT
 
 public:
-    explicit adminWindow(QWidget *parent = nullptr);
-    ~adminWindow();
+    explicit AdminWindow(QWidget *parent = nullptr);
+    ~AdminWindow();
 
 private:
-    Ui::adminWindow *ui;
+    Ui::AdminWindow *ui;
 };
 
 #endif // ADMINWINDOW_H

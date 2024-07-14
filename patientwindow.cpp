@@ -1,14 +1,14 @@
 #include "patientwindow.h"
 #include "ui_patientwindow.h"
 
-patientWindow::patientWindow(QWidget *parent)
+PatientWindow::PatientWindow(QWidget *parent)
     : QDialog(parent)
-    , ui(new Ui::patientWindow)
+    , ui(new Ui::PatientWindow)
 {
     ui->setupUi(this);
 }
 
-patientWindow::~patientWindow()
+PatientWindow::~PatientWindow()
 {
     delete ui;
 }

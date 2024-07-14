@@ -2,6 +2,8 @@
 #include "ui_loginwindow.h"
 #include "registerwindow.h"
 #include "doctorwindow.h"
+#include "adminwindow.h"
+#include "patientwindow.h"
 #include <QFile>
 #include <QTextStream>
 
@@ -29,6 +31,12 @@ void LoginWindow::on_pushButtonLogin_clicked()
         if (role == "Doctor") {
             DoctorWindow *doctorWindow = new DoctorWindow();
             doctorWindow->show();
+        } else if (role == "Patient") {
+            PatientWindow *patientWindow = new PatientWindow();
+            patientWindow->show();
+        } else if (role == "Admin") {
+            AdminWindow *adminWindow = new AdminWindow();
+            adminWindow->show();
         }
         close();
     }
