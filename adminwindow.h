@@ -1,4 +1,3 @@
-// adminwindow.h
 #ifndef ADMINWINDOW_H
 #define ADMINWINDOW_H
 
@@ -24,12 +23,9 @@ private slots:
 
 private:
     Ui::AdminWindow *ui;
-
     void loadUserList();
-    void addUser(const QString &username, const QString &password, const QString &role, int age);
-    void updateUser(const QString &username, const QString &password, const QString &role, int age);
-    void deleteUser(const QString &username);
-    QString getSelectedUsername();
+    void saveUserList();
+    const QString defaultPassword = "123";
 };
 
 #endif // ADMINWINDOW_H
