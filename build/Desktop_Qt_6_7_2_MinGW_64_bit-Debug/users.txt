@@ -1,2 +1,3 @@
-Admin,123,Admin,40
-Moaz,123,Patient,25
+Admin,defaultpassword,Admin,40
+Moaz_Allam,defaultpassword,Patient,25
+Moaz,defaultpassword,Patient,15

@@ -50,7 +50,7 @@ void AdminWindow::saveUserList()
         QString username = ui->tableWidget->item(row, 0)->text();
         QString age = ui->tableWidget->item(row, 1)->text();
         QString role = ui->tableWidget->item(row, 2)->text();
-        QString password = defaultPassword;
+        QString password = "defaultpassword";  // Default password for new users
 
         out << username << "," << password << "," << role << "," << age << "\n";
     }
@@ -63,6 +63,14 @@ void AdminWindow::on_pushButtonAdd_clicked()
     QString username = ui->lineEditUsername->text();
     QString age = ui->lineEditAge->text();
     QString role = ui->comboBoxType->currentText();
+
+    // Check if the username already exists
+    for (int row = 0; row < ui->tableWidget->rowCount(); ++row) {
+        if (ui->tableWidget->item(row, 0)->text() == username) {
+            QMessageBox::warning(this, "Add User", "Username already taken.");
+            return;
+        }
+    }
 
     int row = ui->tableWidget->rowCount();
     ui->tableWidget->insertRow(row);
@@ -100,8 +108,13 @@ void AdminWindow::on_pushButtonDelete_clicked()
         return;
     }
 
-    ui->tableWidget->removeRow(row);
-    saveUserList();
+    QMessageBox::StandardButton reply;
+    reply = QMessageBox::question(this, "Delete User", "Are you sure you want to delete this user?",
+                                  QMessageBox::Yes | QMessageBox::No);
+    if (reply == QMessageBox::Yes) {
+        ui->tableWidget->removeRow(row);
+        saveUserList();
+    }
 }
 
 void AdminWindow::on_tableWidget_itemSelectionChanged()
