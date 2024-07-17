@@ -6,12 +6,170 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>702</width>
-    <height>487</height>
+    <width>1020</width>
+    <height>720</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>Admin Window</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">QDialog {
+    background-color: #f0f4f8;
+    font-family: 'Arial', sans-serif;
+    font-size: 14px;
+}
+
+QTabWidget::pane {
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+QTabBar::tab {
+    background: #0094ff;
+    color: #fff;
+    padding: 10px;
+    border-top-left-radius: 4px;
+    border-top-right-radius: 4px;
+}
+
+QTabBar::tab:selected {
+    background: #007acc;
+}
+
+/* Different background colors for each tab */
+QWidget#tab_2 {
+    background-color: #e6f7ff;
+}
+
+QWidget#tab {
+    background-color: #e6ffe6;
+}
+
+QLabel {
+    color: #333;
+}
+
+QLineEdit, QComboBox {
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+QLineEdit:focus, QComboBox:focus {
+    border-color: #0094ff;
+    box-shadow: 0 0 5px rgba(0, 148, 255, 0.5);
+}
+
+/* Different colors for each button */
+QPushButton#pushButtonAdd {
+    background-color: #0094ff;
+    color: #fff;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 4px;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+QPushButton#pushButtonAdd:hover {
+    background-color: #433bff;
+}
+
+QPushButton#pushButtonUpdate, QPushButton#pushButtonDelete {
+    background-color: #dedcff;
+    color: #050315;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 4px;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+QPushButton#pushButtonUpdate:hover, QPushButton#pushButtonDelete:hover {
+    background-color: #c5c3ff;
+}
+
+QPushButton#pushButtonDeleteAppointment {
+    background-color: #f44336;
+    color: #fff;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 4px;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+QPushButton#pushButtonDeleteAppointment:hover {
+    background-color: #da190b;
+}
+
+QLineEdit {
+    background-color: #dedcff;
+    border: 1px solid #2118d8;
+    border-radius: 5px;
+    padding: 5px;
+    font-size: 18px;
+    color: #050315;
+}
+
+QTableWidget {
+    background-color: #fbfbfe;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+QHeaderView::section {
+    background-color: #f0f4f8;
+    color: #333;
+    padding: 5px;
+    border: 1px solid #ccc;
+}
+
+QTableWidget QTableCornerButton::section {
+    background-color: #050315;
+    border: 1px solid #ccc;
+}
+
+QTableWidget::item {
+    padding: 5px;
+    border: 1px solid #ccc;
+    color: #000; /* Set the text color to black */
+}
+
+/* Dynamic table columns based on screen size */
+QHeaderView::section {
+    min-width: 50px;
+}
+
+QTableWidget {
+    width: 100%;
+}
+
+QTableWidget::column {
+    min-width: 50px;
+    max-width: 200px;
+    width: auto;
+}
+
+@media (max-width: 1200px) {
+    QTableWidget::column {
+        max-width: 150px;
+    }
+}
+
+@media (max-width: 800px) {
+    QTableWidget::column {
+        max-width: 100px;
+    }
+}
+
+@media (max-width: 400px) {
+    QTableWidget::column {
+        max-width: 75px;
+    }
+}
+</string>
   </property>
   <layout class="QVBoxLayout" name="verticalLayout">
    <item>
@@ -119,6 +277,69 @@
       <attribute name="title">
        <string>Appointments</string>
       </attribute>
+      <widget class="QTableWidget" name="tableWidget_2">
+       <property name="geometry">
+        <rect>
+         <x>10</x>
+         <y>10</y>
+         <width>981</width>
+         <height>611</height>
+        </rect>
+       </property>
+       <column>
+        <property name="text">
+         <string>ID</string>
+        </property>
+       </column>
+       <column>
+        <property name="text">
+         <string>Patient name</string>
+        </property>
+       </column>
+       <column>
+        <property name="text">
+         <string>Age</string>
+        </property>
+       </column>
+       <column>
+        <property name="text">
+         <string>New Column</string>
+        </property>
+       </column>
+       <column>
+        <property name="text">
+         <string>Contact number</string>
+        </property>
+       </column>
+       <column>
+        <property name="text">
+         <string>Date</string>
+        </property>
+       </column>
+       <column>
+        <property name="text">
+         <string>Time</string>
+        </property>
+       </column>
+       <column>
+        <property name="text">
+         <string>Message</string>
+        </property>
+       </column>
+      </widget>
+      <widget class="QPushButton" name="pushButtonDeleteAppointment">
+       <property name="geometry">
+        <rect>
+         <x>10</x>
+         <y>630</y>
+         <width>215</width>
+         <height>31</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Delete</string>
+       </property>
+      </widget>
      </widget>
     </widget>
    </item>

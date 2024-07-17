@@ -13,6 +13,80 @@
   <property name="windowTitle">
    <string>Dialog</string>
   </property>
+  <property name="styleSheet">
+   <string notr="true">QDialog {
+    background-color: #f0f4f8;
+    font-family: 'Arial', sans-serif;
+    font-size: 14px;
+}
+
+QLabel {
+    color: #333;
+}
+
+QLineEdit {
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+QLineEdit:focus {
+    border-color: #0094ff;
+    box-shadow: 0 0 5px rgba(0, 148, 255, 0.5);
+}
+
+QPushButton {
+    background-color: #0094ff;
+    color: #fff;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 4px;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+QPushButton:hover {
+    background-color: #007acc;
+}
+
+QGroupBox {
+    font-weight: bold;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    padding: 10px;
+}
+
+QRadioButton {
+    margin-left: 5px;
+}
+
+QComboBox {
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+QComboBox:focus {
+    border-color: #0094ff;
+    box-shadow: 0 0 5px rgba(0, 148, 255, 0.5);
+}
+
+QLabel#error,
+QLabel#labelUsernameError,
+QLabel#labelPasswordError,
+QLabel#labelRetypeError,
+QLabel#labelAgeError {
+    color: #ff0004;
+    font-size: 12px;
+}
+
+QGroupBox#groupBoxDate,
+QGroupBox#groupBoxGender,
+QGroupBox#groupBoxType {
+    margin: 10px;
+}
+</string>
+  </property>
   <widget class="QWidget" name="layoutWidget">
    <property name="geometry">
     <rect>
@@ -52,7 +126,7 @@
          <widget class="QLabel" name="labelUsernameError">
           <property name="font">
            <font>
-            <pointsize>12</pointsize>
+            <pointsize>-1</pointsize>
            </font>
           </property>
           <property name="text">
@@ -92,7 +166,7 @@
          <widget class="QLabel" name="labelPasswordError">
           <property name="font">
            <font>
-            <pointsize>12</pointsize>
+            <pointsize>-1</pointsize>
            </font>
           </property>
           <property name="text">
@@ -132,7 +206,7 @@
          <widget class="QLabel" name="labelRetypeError">
           <property name="font">
            <font>
-            <pointsize>12</pointsize>
+            <pointsize>-1</pointsize>
            </font>
           </property>
           <property name="text">
@@ -151,6 +225,7 @@
         <property name="font">
          <font>
           <pointsize>12</pointsize>
+          <bold>true</bold>
          </font>
         </property>
         <property name="title">
@@ -277,7 +352,7 @@
        <widget class="QLabel" name="labelAgeError">
         <property name="font">
          <font>
-          <pointsize>16</pointsize>
+          <pointsize>-1</pointsize>
          </font>
         </property>
         <property name="text">

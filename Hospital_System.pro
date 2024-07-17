@@ -10,6 +10,7 @@ CONFIG += c++17
 
 SOURCES += \
     adminwindow.cpp \
+    appointmentform.cpp \
     doctorwindow.cpp \
     main.cpp \
     loginwindow.cpp \
@@ -18,6 +19,7 @@ SOURCES += \
 
 HEADERS += \
     adminwindow.h \
+    appointmentform.h \
     doctorwindow.h \
     loginwindow.h \
     patientwindow.h \
@@ -25,6 +27,7 @@ HEADERS += \
 
 FORMS += \
     adminwindow.ui \
+    appointmentform.ui \
     doctorwindow.ui \
     loginwindow.ui \
     patientwindow.ui \

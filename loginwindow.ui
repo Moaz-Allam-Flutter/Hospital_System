@@ -7,11 +7,75 @@
     <x>0</x>
     <y>0</y>
     <width>652</width>
-    <height>323</height>
+    <height>333</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>LoginWindow</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">/* General Styles */
+QWidget {
+    background-color: #fbfbfe;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 18px;
+    color: #050315;
+}
+
+/* QLabel Styles */
+QLabel {
+    color: #050315;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+/* QLineEdit Styles */
+QLineEdit {
+    background-color: #dedcff;
+    border: 1px solid #2118d8;
+    border-radius: 5px;
+    padding: 5px;
+    font-size: 18px;
+    color: #050315;
+}
+
+/* QPushButton Styles */
+QPushButton {
+    background-color: #0094ff;
+    color: #fbfbfe;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+QPushButton:hover {
+    background-color: #433bff;
+}
+
+QPushButton:pressed {
+    background-color: #2118d8;
+    padding-left: 15px;
+    padding-top: 15px;
+}
+
+/* Register Button Specific Styles */
+QPushButton#pushButtonRegister {
+    background-color: #dedcff;
+    color: #050315;
+}
+
+QPushButton#pushButtonRegister:hover {
+    background-color: #c7c4ff;
+}
+
+QPushButton#pushButtonRegister:pressed {
+    background-color: #dedcff;
+    padding-left: 15px;
+    padding-top: 15px;
+}
+</string>
   </property>
   <widget class="QWidget" name="centralwidget">
    <widget class="QWidget" name="layoutWidget">
@@ -20,7 +84,7 @@
       <x>10</x>
       <y>10</y>
       <width>631</width>
-      <height>271</height>
+      <height>294</height>
      </rect>
     </property>
     <layout class="QVBoxLayout" name="verticalLayout_2">
@@ -32,7 +96,9 @@
           <widget class="QLabel" name="label">
            <property name="font">
             <font>
-             <pointsize>18</pointsize>
+             <family>Segoe UI</family>
+             <pointsize>-1</pointsize>
+             <bold>true</bold>
             </font>
            </property>
            <property name="text">
@@ -44,7 +110,8 @@
           <widget class="QLineEdit" name="lineEditUsername">
            <property name="font">
             <font>
-             <pointsize>18</pointsize>
+             <family>Segoe UI</family>
+             <pointsize>-1</pointsize>
             </font>
            </property>
           </widget>
@@ -57,7 +124,9 @@
           <widget class="QLabel" name="label_2">
            <property name="font">
             <font>
-             <pointsize>18</pointsize>
+             <family>Segoe UI</family>
+             <pointsize>-1</pointsize>
+             <bold>true</bold>
             </font>
            </property>
            <property name="text">
@@ -69,7 +138,8 @@
           <widget class="QLineEdit" name="lineEditPassword">
            <property name="font">
             <font>
-             <pointsize>18</pointsize>
+             <family>Segoe UI</family>
+             <pointsize>-1</pointsize>
             </font>
            </property>
            <property name="echoMode">
@@ -85,7 +155,9 @@
       <widget class="QLabel" name="labelError">
        <property name="font">
         <font>
-         <pointsize>18</pointsize>
+         <family>Segoe UI</family>
+         <pointsize>-1</pointsize>
+         <bold>true</bold>
         </font>
        </property>
        <property name="text">
@@ -99,7 +171,9 @@
         <widget class="QPushButton" name="pushButtonLogin">
          <property name="font">
           <font>
-           <pointsize>18</pointsize>
+           <family>Segoe UI</family>
+           <pointsize>-1</pointsize>
+           <bold>true</bold>
           </font>
          </property>
          <property name="text">
@@ -111,7 +185,9 @@
         <widget class="QPushButton" name="pushButtonRegister">
          <property name="font">
           <font>
-           <pointsize>18</pointsize>
+           <family>Segoe UI</family>
+           <pointsize>-1</pointsize>
+           <bold>true</bold>
           </font>
          </property>
          <property name="text">
@@ -130,7 +206,7 @@
      <x>0</x>
      <y>0</y>
      <width>652</width>
-     <height>24</height>
+     <height>29</height>
     </rect>
    </property>
   </widget>
