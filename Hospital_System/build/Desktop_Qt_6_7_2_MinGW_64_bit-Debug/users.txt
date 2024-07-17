@@ -1,0 +1,4 @@
+Admin,defaultpassword,Admin,40
+Moaz_Allam,defaultpassword,Patient,25
+Moaz,defaultpassword,Patient,15
+Kareem,defaultpassword,Doctor,20

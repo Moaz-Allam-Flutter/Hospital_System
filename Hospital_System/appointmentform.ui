@@ -1,0 +1,253 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>AppointmentForm</class>
+ <widget class="QDialog" name="AppointmentForm">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>400</width>
+    <height>432</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Appointment Booking</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">QDialog {
+    background-color: #f7f9fc;
+    font-family: 'Arial', sans-serif;
+    font-size: 14px;
+    padding: 20px;
+    border-radius: 8px;
+}
+
+QLabel {
+    color: #333;
+    margin-bottom: 10px;
+}
+
+QLineEdit, QComboBox {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    background-color: #ffffff;
+    color: #000;  /* Text color in QLineEdit set to black */
+}
+
+QLineEdit:focus, QComboBox:focus {
+    border-color: #007acc;
+    box-shadow: 0 0 5px rgba(0, 122, 204, 0.5);
+}
+
+QPushButton#btnBookAppointment {
+    background-color: #0094ff;
+    color: #fff;
+    padding: 12px 18px;
+    border: none;
+    border-radius: 6px;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+QPushButton#btnBookAppointment:hover {
+    background-color: #218838;
+}
+
+QPushButton#btnCancel {
+    background-color: #dedcff;
+    color: #080608;
+    padding: 12px 18px;
+    border: none;
+    border-radius: 6px;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+QPushButton#btnCancel:hover {
+    background-color: #c82333;
+}
+
+QFormLayout {
+    spacing: 10px;
+    margin-bottom: 20px;
+}
+
+QFormLayout QLineEdit, QFormLayout QComboBox {
+    min-width: 250px;
+}
+
+QComboBox {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    background-color: #ffffff;
+}
+
+QComboBox::drop-down {
+    border-left: 1px solid #ccc;
+}
+
+QDateEdit, QTimeEdit {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    background-color: #ffffff;
+    color: #000;  /* Text color in QDateEdit and QTimeEdit set to black */
+}
+
+QDateEdit::down-arrow, QTimeEdit::down-arrow {
+   color: #000;
+}
+
+QDateEdit:focus, QTimeEdit:focus {
+    border-color: #007acc;
+    box-shadow: 0 0 5px rgba(0, 122, 204, 0.5);
+}
+
+QWidget#appointmentDetails {
+    background-color: #e6f0ff;
+    padding: 15px;
+    border-radius: 6px;
+}
+
+QWidget#appointmentDetails QLabel {
+    color: #0056b3;
+    font-weight: bold;
+}
+
+QWidget#appointmentDetails QLineEdit {
+    background-color: #ffffff;
+    border: 1px solid #007acc;
+    color: #000;  /* Text color in QLineEdit within appointmentDetails set to black */
+}
+
+QWidget#appointmentDetails QComboBox {
+    background-color: #ffffff;
+    border: 1px solid #007acc;
+}
+
+QWidget#appointmentDetails QDateEdit, QWidget#appointmentDetails QTimeEdit {
+    background-color: #ffffff;
+    border: 1px solid #007acc;
+    color: #000;  /* Text color in QDateEdit and QTimeEdit within appointmentDetails set to black */
+}
+
+QWidget#appointmentDetails QDateEdit::down-arrow, QWidget#appointmentDetails QTimeEdit::down-arrow {
+    image: url(:/black-arrow-down.png);  /* Assuming you have an image resource for a black arrow */
+}
+
+QWidget#appointmentDetails QPushButton {
+    background-color: #28a745;
+    color: #fff;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 6px;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+QWidget#appointmentDetails QPushButton:hover {
+    background-color: #218838;
+}
+</string>
+  </property>
+  <layout class="QVBoxLayout" name="verticalLayout">
+   <item>
+    <layout class="QVBoxLayout" name="titleLayout">
+     <item>
+      <widget class="QLabel" name="messageTitle">
+       <property name="enabled">
+        <bool>true</bool>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">
+         QLabel {
+             font-size: 18px;
+             font-weight: bold;
+         }
+        </string>
+       </property>
+       <property name="text">
+        <string>Appointment Booking Form</string>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignmentFlag::AlignCenter</set>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </item>
+   <item>
+    <layout class="QFormLayout" name="formLayout">
+     <property name="labelAlignment">
+      <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
+     </property>
+     <property name="formAlignment">
+      <set>Qt::AlignmentFlag::AlignLeading|Qt::AlignmentFlag::AlignLeft|Qt::AlignmentFlag::AlignTop</set>
+     </property>
+     <item row="0" column="0">
+      <widget class="QLabel" name="labelPatientName">
+       <property name="text">
+        <string>Patient Name:</string>
+       </property>
+      </widget>
+     </item>
+     <item row="0" column="1">
+      <widget class="QLineEdit" name="lineEditPatientName"/>
+     </item>
+     <item row="1" column="0">
+      <widget class="QLabel" name="labelDoctor">
+       <property name="text">
+        <string>Doctor:</string>
+       </property>
+      </widget>
+     </item>
+     <item row="2" column="0">
+      <widget class="QLabel" name="labelDate">
+       <property name="text">
+        <string>Date:</string>
+       </property>
+      </widget>
+     </item>
+     <item row="2" column="1">
+      <widget class="QDateEdit" name="dateEdit"/>
+     </item>
+     <item row="3" column="0">
+      <widget class="QLabel" name="labelTime">
+       <property name="text">
+        <string>Time:</string>
+       </property>
+      </widget>
+     </item>
+     <item row="3" column="1">
+      <widget class="QTimeEdit" name="timeEdit"/>
+     </item>
+     <item row="1" column="1">
+      <widget class="QComboBox" name="comboBoxDoctor"/>
+     </item>
+    </layout>
+   </item>
+   <item>
+    <layout class="QHBoxLayout" name="horizontalLayout">
+     <item>
+      <widget class="QPushButton" name="btnBookAppointment">
+       <property name="text">
+        <string>Book Appointment</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="btnCancel">
+       <property name="text">
+        <string>Cancel</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </item>
+  </layout>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

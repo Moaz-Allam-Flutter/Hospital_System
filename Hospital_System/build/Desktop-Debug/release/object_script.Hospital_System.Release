@@ -1,0 +1,15 @@
+release/adminwindow.o
+release/appointmentform.o
+release/doctorwindow.o
+release/main.o
+release/loginwindow.o
+release/medicalrecord.o
+release/patientwindow.o
+release/registerwindow.o
+release/moc_adminwindow.o
+release/moc_appointmentform.o
+release/moc_doctorwindow.o
+release/moc_loginwindow.o
+release/moc_medicalrecord.o
+release/moc_patientwindow.o
+release/moc_registerwindow.o

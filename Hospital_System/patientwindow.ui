@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>PatientWindow</class>
+ <widget class="QDialog" name="PatientWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>406</width>
+    <height>384</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Patient Window</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">QDialog {
+    color: #050315;
+    background-color: #fbfbfe;
+    font-family: 'Arial', sans-serif;
+    font-size: 16px;
+}
+
+QPushButton {
+    background-color: #312c93;
+    color: #fbfbfe;
+	font-size: 24px;
+    border-radius: 8px;
+    padding: 10px;
+    margin: 10px auto;
+    width: 300px;
+    height: 50px;
+    display: block;
+    text-align: center;
+}
+
+QPushButton:hover {
+    background-color: #433bff;
+}
+
+QPushButton:pressed {
+    background-color: #dedcff;
+    color: #312c93;
+}
+</string>
+  </property>
+  <layout class="QVBoxLayout" name="verticalLayout">
+   <item>
+    <widget class="QPushButton" name="btnBookAppointment">
+     <property name="text">
+      <string>Book an Appointment</string>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <widget class="QPushButton" name="btnFillMedicalRecord">
+     <property name="text">
+      <string>Fill a Medical Record</string>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <widget class="QPushButton" name="btnMessageHealthcareProvider">
+     <property name="text">
+      <string>Message a Healthcare Provider</string>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <widget class="QPushButton" name="btnPastAppointments">
+     <property name="text">
+      <string>Past Appointments</string>
+     </property>
+    </widget>
+   </item>
+  </layout>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
