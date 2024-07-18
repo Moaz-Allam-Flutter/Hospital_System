@@ -15,16 +15,6 @@ public:
     explicit DoctorWindow(QWidget *parent = nullptr);
     ~DoctorWindow();
 
-private slots:
-    void addAppointment();
-    void editAppointment();
-    void deleteAppointment();
-    void addRecord();
-    void editRecord();
-    void deleteRecord();
-    void loadAppointments();
-    void loadPatients();
-
 private:
     Ui::DoctorWindow *ui;
 };

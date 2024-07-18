@@ -4,6 +4,7 @@
 #include "doctorwindow.h"
 #include "adminwindow.h"
 #include "patientwindow.h"
+#include "currentuser.h"
 #include <QFile>
 #include <QTextStream>
 
@@ -28,6 +29,9 @@ void LoginWindow::on_pushButtonLogin_clicked()
 
     if (validateUser(username, password, role))
     {
+        // Set the current username
+        CurrentUser::instance()->setUsername(username);
+
         if (role == "Doctor") {
             DoctorWindow *doctorWindow = new DoctorWindow();
             doctorWindow->show();

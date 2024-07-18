@@ -12,6 +12,7 @@ SOURCES += \
     adminwindow.cpp \
     appointmentform.cpp \
     availableslots.cpp \
+    currentuser.cpp \
     doctorwindow.cpp \
     main.cpp \
     loginwindow.cpp \
@@ -24,6 +25,7 @@ HEADERS += \
     adminwindow.h \
     appointmentform.h \
     availableslots.h \
+    currentuser.h \
     doctorwindow.h \
     loginwindow.h \
     medicalrecord.h \

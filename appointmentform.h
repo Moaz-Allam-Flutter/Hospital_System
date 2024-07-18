@@ -15,7 +15,14 @@ public:
     explicit AppointmentForm(QWidget *parent = nullptr);
     ~AppointmentForm();
 
+private slots:
+    void on_doctorComboBox_currentIndexChanged(int index);
+    void on_btnBookAppointment_clicked();
+
 private:
+    void loadDoctors();
+    void loadSlots(const QString &doctor);
+
     Ui::AppointmentForm *ui;
 };
 

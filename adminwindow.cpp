@@ -11,7 +11,14 @@ AdminWindow::AdminWindow(QWidget *parent)
     , ui(new Ui::AdminWindow)
 {
     ui->setupUi(this);
+
+    // Set up the table widgets
+    ui->tableWidget->horizontalHeader()->setStretchLastSection(true);
+    ui->tableWidget_2->horizontalHeader()->setStretchLastSection(true);
+
+    // Load user list and appointments
     loadUserList();
+    loadAppointmentList(); // Add this method to load appointments
 }
 
 AdminWindow::~AdminWindow()
@@ -41,7 +48,44 @@ void AdminWindow::loadUserList()
     }
 
     file.close();
+
+    // Resize columns to fit the screen
+    ui->tableWidget->resizeColumnsToContents();
 }
+
+void AdminWindow::loadAppointmentList()
+{
+    QFile file("appointments.txt");
+    if (!file.open(QIODevice::ReadOnly | QIODevice::Text)) {
+        QMessageBox::warning(this, "Error", "Unable to open appointments file.");
+        return;
+    }
+
+    QTextStream in(&file);
+    while (!in.atEnd()) {
+        QString line = in.readLine();
+        QStringList fields = line.split(",");
+
+        if (fields.size() < 5) {
+            // Skip malformed lines
+            continue;
+        }
+
+        int row = ui->tableWidget_2->rowCount();
+        ui->tableWidget_2->insertRow(row);
+        ui->tableWidget_2->setItem(row, 0, new QTableWidgetItem(fields[0])); // Id
+        ui->tableWidget_2->setItem(row, 1, new QTableWidgetItem(fields[1])); // Slot Id
+        ui->tableWidget_2->setItem(row, 2, new QTableWidgetItem(fields[2])); // Patient name
+        ui->tableWidget_2->setItem(row, 3, new QTableWidgetItem(fields[3])); // Contact number
+        ui->tableWidget_2->setItem(row, 4, new QTableWidgetItem(fields[4])); // Doctor
+
+        // Optionally, you can store the data in a suitable data structure if needed
+    }
+
+    file.close();
+    ui->tableWidget_2->resizeColumnsToContents(); // Resize columns to fit content
+}
+
 
 void AdminWindow::saveUserList()
 {
@@ -133,6 +177,24 @@ void AdminWindow::on_pushButtonDelete_clicked()
         saveUserList();
     }
 }
+
+void AdminWindow::on_pushButtonDeleteAppointment_clicked()
+{
+    int row = ui->tableWidget_2->currentRow();
+    if (row < 0) {
+        QMessageBox::warning(this, "Delete Appointment", "Please select an appointment to delete.");
+        return;
+    }
+
+    QMessageBox::StandardButton reply;
+    reply = QMessageBox::question(this, "Delete Appointment", "Are you sure you want to delete this appointment?",
+                                  QMessageBox::Yes | QMessageBox::No);
+    if (reply == QMessageBox::Yes) {
+        ui->tableWidget_2->removeRow(row);
+        // Here you might also want to update the appointments.txt file to reflect the deletion
+    }
+}
+
 
 void AdminWindow::on_tableWidget_itemSelectionChanged()
 {

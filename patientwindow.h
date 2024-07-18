@@ -15,6 +15,15 @@ public:
     explicit PatientWindow(QWidget *parent = nullptr);
     ~PatientWindow();
 
+private slots:
+    void on_btnBookAppointment_clicked();
+
+    void on_btnFillMedicalRecord_clicked();
+
+    void on_btnMessageHealthcareProvider_clicked();
+
+    void on_btnPastAppointments_clicked();
+
 private:
     Ui::PatientWindow *ui;
 };

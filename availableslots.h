@@ -15,6 +15,11 @@ public:
     explicit AvailableSlots(QWidget *parent = nullptr);
     ~AvailableSlots();
 
+private slots:
+    void on_doctorComboBox_currentIndexChanged(int index);
+    void loadDoctors();
+    void loadSlots(const QString &doctor);
+
 private:
     Ui::AvailableSlots *ui;
 };

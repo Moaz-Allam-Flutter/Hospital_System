@@ -15,7 +15,12 @@ public:
     explicit medicalrecord(QWidget *parent = nullptr);
     ~medicalrecord();
 
+private slots:
+    void on_pushButtonSave_clicked();  // Slot for the Save button
+
 private:
+    void loadRecord();  // Declaration of loadRecord method
+
     Ui::medicalrecord *ui;
 };
 

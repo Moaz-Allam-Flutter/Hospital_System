@@ -14,47 +14,60 @@
    <string>Dialog</string>
   </property>
   <property name="styleSheet">
-   <string notr="true">QDialog {
-    background-color: #f7f9fc;
-    font-family: 'Arial', sans-serif;
-    font-size: 14px;
-    padding: 20px;
-    border-radius: 8px;
+   <string notr="true">/* General Styles */
+QWidget {
+    background-color: #fbfbfe;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 18px;
+    color: #050315;
 }
 
+/* QLabel Styles */
 QLabel {
-    color: #000;
-    margin-bottom: 10px;
+    color: #050315;
     font-size: 18px;
     font-weight: bold;
 }
 
-QTableView {
-    border: 1px solid #ccc;
-    border-radius: 6px;
+/* QLineEdit Styles */
+QLineEdit {
+    background-color: #dedcff;
+    border: 1px solid #2118d8;
+    border-radius: 5px;
+    padding: 5px;
+    font-size: 18px;
+    color: #050315;
+}
+
+/* QTextEdit Styles */
+QTextEdit {
+    background-color: #dedcff;
+    border: 4px solid #2118d8;
+    border-radius: 5px;
+    padding: 5px;
+    font-size: 18px;
+    color: #050315;
+}
+
+/* QTableWidget Styles */
+QTableWidget {
     background-color: #ffffff;
-    color: #000;
+    border: 1px solid #2118d8;
+    border-radius: 5px;
+    padding: 5px;
+    font-size: 18px;
+    color: #050315;
+    gridline-color: #2118d8;
 }
 
-QTableView::item {
-    padding: 10px;
+QHeaderView::section {
+    background-color: #0094ff;
+    color: #fbfbfe;
+    padding: 5px;
+    border: none;
 }
 
-QTableView::item:selected {
-    background-color: #007acc;
-    color: #fff;
-}
-
-QTableView::item:disabled {
-    background-color: #d3d3d3;
-}
-
-QTableView QHeaderView::section {
-    background-color: #f1f1f1;
-    padding: 8px;
-    border: 1px solid #ccc;
-}
-
+/* QPushButton Styles */
 QPushButton {
     background-color: #0094ff;
     color: #fbfbfe;
@@ -73,9 +86,49 @@ QPushButton:pressed {
     background-color: #2118d8;
     padding-left: 15px;
     padding-top: 15px;
+}
+
+/* Specific Button Styles */
+QPushButton#addAppointmentButton,
+QPushButton#editAppointmentButton,
+QPushButton#deleteAppointmentButton,
+QPushButton#addRecordButton,
+QPushButton#editRecordButton,
+QPushButton#deleteRecordButton,
+QPushButton#addSlotButton,
+QPushButton#editSlotButton,
+QPushButton#deleteSlotButton {
+    background-color: #0094ff;
+    color: #fbfbfe;
+}
+
+QPushButton#addAppointmentButton:hover,
+QPushButton#editAppointmentButton:hover,
+QPushButton#deleteAppointmentButton:hover,
+QPushButton#addRecordButton:hover,
+QPushButton#editRecordButton:hover,
+QPushButton#deleteRecordButton:hover,
+QPushButton#addSlotButton:hover,
+QPushButton#editSlotButton:hover,
+QPushButton#deleteSlotButton:hover {
+    background-color: #433bff;
+}
+
+QPushButton#addAppointmentButton:pressed,
+QPushButton#editAppointmentButton:pressed,
+QPushButton#deleteAppointmentButton:pressed,
+QPushButton#addRecordButton:pressed,
+QPushButton#editRecordButton:pressed,
+QPushButton#deleteRecordButton:pressed,
+QPushButton#addSlotButton:pressed,
+QPushButton#editSlotButton:pressed,
+QPushButton#deleteSlotButton:pressed {
+    background-color: #2118d8;
+    padding-left: 15px;
+    padding-top: 15px;
 }</string>
   </property>
-  <widget class="QWidget" name="">
+  <widget class="QWidget" name="layoutWidget">
    <property name="geometry">
     <rect>
      <x>20</x>
@@ -110,11 +163,6 @@ QPushButton:pressed {
       <column>
        <property name="text">
         <string>Doctor</string>
-       </property>
-      </column>
-      <column>
-       <property name="text">
-        <string>Date</string>
        </property>
       </column>
       <column>
