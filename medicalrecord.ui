@@ -146,16 +146,6 @@ QDateEdit:focus, QTimeEdit:focus {
     <widget class="QTextEdit" name="textEditMedications"/>
    </item>
    <item>
-    <widget class="QLabel" name="labelAppointments">
-     <property name="text">
-      <string>Appointments:</string>
-     </property>
-    </widget>
-   </item>
-   <item>
-    <widget class="QTextEdit" name="textEditAppointments"/>
-   </item>
-   <item>
     <widget class="QLabel" name="labelNotes">
      <property name="text">
       <string>Notes:</string>

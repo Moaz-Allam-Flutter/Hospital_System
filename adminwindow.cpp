@@ -21,7 +21,7 @@ AdminWindow::~AdminWindow()
 
 void AdminWindow::loadUserList()
 {
-    QFile file(":/files/users.txt");
+    QFile file("users.txt");
     if (!file.open(QIODevice::ReadOnly | QIODevice::Text))
         return;
 
@@ -45,7 +45,7 @@ void AdminWindow::loadUserList()
 
 void AdminWindow::saveUserList()
 {
-    QFile file(":/files/users.txt");
+    QFile file("users.txt");
     if (!file.open(QIODevice::WriteOnly | QIODevice::Text))
         return;
 
