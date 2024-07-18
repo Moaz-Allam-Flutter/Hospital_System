@@ -2,10 +2,11 @@
 #define ADMINWINDOW_H
 
 #include <QDialog>
+#include <QMap>
 
-QT_BEGIN_NAMESPACE
-namespace Ui { class AdminWindow; }
-QT_END_NAMESPACE
+namespace Ui {
+class AdminWindow;
+}
 
 class AdminWindow : public QDialog
 {
@@ -23,9 +24,9 @@ private slots:
 
 private:
     Ui::AdminWindow *ui;
+    QMap<QString, QString> userPasswords; // Add this line
     void loadUserList();
     void saveUserList();
-    const QString defaultPassword = "123";
 };
 
 #endif // ADMINWINDOW_H

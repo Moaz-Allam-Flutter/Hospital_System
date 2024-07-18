@@ -32,7 +32,6 @@ QLineEdit {
 
 QLineEdit:focus {
     border-color: #0094ff;
-    box-shadow: 0 0 5px rgba(0, 148, 255, 0.5);
 }
 
 QPushButton {
@@ -68,7 +67,6 @@ QComboBox {
 
 QComboBox:focus {
     border-color: #0094ff;
-    box-shadow: 0 0 5px rgba(0, 148, 255, 0.5);
 }
 
 QLabel#error,
@@ -423,6 +421,13 @@ QGroupBox#groupBoxType {
            <widget class="QRadioButton" name="radioButtonPatient">
             <property name="text">
              <string>Patient</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QRadioButton" name="radioButtonPatient_2">
+            <property name="text">
+             <string>Nurse</string>
             </property>
            </widget>
           </item>

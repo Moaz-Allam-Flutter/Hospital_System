@@ -1,3 +1,2 @@
-Admin,123,Admin,25
-Moaz,123,Patient,19
-Kiro,123,Doctor,20
+Admin,admin,Admin,29
+Moaz,123,Doctor,24

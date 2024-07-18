@@ -4,6 +4,7 @@
 #include <QTextStream>
 #include <QStringList>
 #include <QMessageBox>
+#include <QMap>
 
 AdminWindow::AdminWindow(QWidget *parent)
     : QDialog(parent)
@@ -20,7 +21,7 @@ AdminWindow::~AdminWindow()
 
 void AdminWindow::loadUserList()
 {
-    QFile file("users.txt");
+    QFile file(":/files/users.txt");
     if (!file.open(QIODevice::ReadOnly | QIODevice::Text))
         return;
 
@@ -34,6 +35,9 @@ void AdminWindow::loadUserList()
         ui->tableWidget->setItem(row, 0, new QTableWidgetItem(fields[0])); // username
         ui->tableWidget->setItem(row, 1, new QTableWidgetItem(fields[3])); // age
         ui->tableWidget->setItem(row, 2, new QTableWidgetItem(fields[2])); // role
+
+        // Store the username and password in a map for later use
+        userPasswords[fields[0]] = fields[1];
     }
 
     file.close();
@@ -41,7 +45,7 @@ void AdminWindow::loadUserList()
 
 void AdminWindow::saveUserList()
 {
-    QFile file("users.txt");
+    QFile file(":/files/users.txt");
     if (!file.open(QIODevice::WriteOnly | QIODevice::Text))
         return;
 
@@ -50,7 +54,15 @@ void AdminWindow::saveUserList()
         QString username = ui->tableWidget->item(row, 0)->text();
         QString age = ui->tableWidget->item(row, 1)->text();
         QString role = ui->tableWidget->item(row, 2)->text();
-        QString password = "123";  // Default password for new users
+
+        QString password;
+        if (userPasswords.contains(username)) {
+            // Use the existing password if the user already exists
+            password = userPasswords[username];
+        } else {
+            // Assign default password to new users
+            password = "123";
+        }
 
         out << username << "," << password << "," << role << "," << age << "\n";
     }
@@ -77,6 +89,9 @@ void AdminWindow::on_pushButtonAdd_clicked()
     ui->tableWidget->setItem(row, 0, new QTableWidgetItem(username));
     ui->tableWidget->setItem(row, 1, new QTableWidgetItem(age));
     ui->tableWidget->setItem(row, 2, new QTableWidgetItem(role));
+
+    // Store the default password for the new user
+    userPasswords[username] = "123";
 
     saveUserList();
 }
@@ -112,6 +127,8 @@ void AdminWindow::on_pushButtonDelete_clicked()
     reply = QMessageBox::question(this, "Delete User", "Are you sure you want to delete this user?",
                                   QMessageBox::Yes | QMessageBox::No);
     if (reply == QMessageBox::Yes) {
+        QString username = ui->tableWidget->item(row, 0)->text();
+        userPasswords.remove(username);
         ui->tableWidget->removeRow(row);
         saveUserList();
     }

@@ -176,7 +176,7 @@ QTableWidget::column {
    <item>
     <widget class="QTabWidget" name="tabWidget">
      <property name="currentIndex">
-      <number>0</number>
+      <number>1</number>
      </property>
      <widget class="QWidget" name="tab_2">
       <attribute name="title">
@@ -301,7 +301,7 @@ QTableWidget::column {
        </property>
        <column>
         <property name="text">
-         <string>ID</string>
+         <string>Id</string>
         </property>
        </column>
        <column>
@@ -311,17 +311,12 @@ QTableWidget::column {
        </column>
        <column>
         <property name="text">
-         <string>Age</string>
-        </property>
-       </column>
-       <column>
-        <property name="text">
-         <string>New Column</string>
-        </property>
-       </column>
-       <column>
-        <property name="text">
          <string>Contact number</string>
+        </property>
+       </column>
+       <column>
+        <property name="text">
+         <string>Doctor</string>
         </property>
        </column>
        <column>
@@ -336,7 +331,7 @@ QTableWidget::column {
        </column>
        <column>
         <property name="text">
-         <string>Message</string>
+         <string>Slot Id</string>
         </property>
        </column>
       </widget>
