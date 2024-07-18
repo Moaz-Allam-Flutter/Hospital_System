@@ -197,34 +197,34 @@ QWidget#appointmentDetails QPushButton:hover {
       <widget class="QLineEdit" name="lineEditPatientName"/>
      </item>
      <item row="1" column="0">
+      <widget class="QLabel" name="labelContactNumber">
+       <property name="text">
+        <string>Contact Number:</string>
+       </property>
+      </widget>
+     </item>
+     <item row="1" column="1">
+      <widget class="QLineEdit" name="lineEditContactNumber"/>
+     </item>
+     <item row="2" column="0">
       <widget class="QLabel" name="labelDoctor">
        <property name="text">
         <string>Doctor:</string>
        </property>
       </widget>
      </item>
-     <item row="2" column="0">
-      <widget class="QLabel" name="labelDate">
-       <property name="text">
-        <string>Date:</string>
-       </property>
-      </widget>
-     </item>
      <item row="2" column="1">
-      <widget class="QDateEdit" name="dateEdit"/>
+      <widget class="QComboBox" name="comboBoxDoctor"/>
      </item>
      <item row="3" column="0">
-      <widget class="QLabel" name="labelTime">
+      <widget class="QLabel" name="labelAvailableSlots">
        <property name="text">
-        <string>Time:</string>
+        <string>Available Slots:</string>
        </property>
       </widget>
      </item>
      <item row="3" column="1">
-      <widget class="QTimeEdit" name="timeEdit"/>
-     </item>
-     <item row="1" column="1">
-      <widget class="QComboBox" name="comboBoxDoctor"/>
+      <widget class="QComboBox" name="comboBoxAvailableSlots"/>
      </item>
     </layout>
    </item>
@@ -233,7 +233,7 @@ QWidget#appointmentDetails QPushButton:hover {
      <item>
       <widget class="QPushButton" name="btnBookAppointment">
        <property name="text">
-        <string>Book Appointment</string>
+        <string>Add Appointment</string>
        </property>
       </widget>
      </item>

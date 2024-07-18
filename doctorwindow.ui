@@ -91,7 +91,7 @@ QPushButton#pushButtonSave:pressed {
 </string>
      </property>
      <property name="currentIndex">
-      <number>1</number>
+      <number>0</number>
      </property>
      <widget class="QWidget" name="appointmentsTab">
       <attribute name="title">
@@ -170,6 +170,87 @@ QPushButton#pushButtonSave:pressed {
           </widget>
          </item>
         </layout>
+       </item>
+      </layout>
+     </widget>
+     <widget class="QWidget" name="slotsTab">
+      <attribute name="title">
+       <string>Slots</string>
+      </attribute>
+      <layout class="QVBoxLayout" name="verticalLayout_4">
+       <item>
+        <layout class="QHBoxLayout" name="slotDetailsLayout">
+         <item>
+          <widget class="QLabel" name="slotDateLabel">
+           <property name="text">
+            <string>Date</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QDateEdit" name="slotDateEdit"/>
+         </item>
+        </layout>
+       </item>
+       <item>
+        <layout class="QHBoxLayout" name="slotTimeLayout">
+         <item>
+          <widget class="QLabel" name="slotTimeLabel">
+           <property name="text">
+            <string>Time</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QTimeEdit" name="slotTimeEdit"/>
+         </item>
+        </layout>
+       </item>
+       <item>
+        <layout class="QHBoxLayout" name="slotDurationLayout">
+         <item>
+          <widget class="QLabel" name="slotDurationLabel">
+           <property name="text">
+            <string>Duration</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QSpinBox" name="slotDurationSpinBox">
+           <property name="suffix">
+            <string> mins</string>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </item>
+       <item>
+        <layout class="QHBoxLayout" name="slotButtonsLayout">
+         <item>
+          <widget class="QPushButton" name="addSlotButton">
+           <property name="text">
+            <string>Add Slot</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QPushButton" name="editSlotButton">
+           <property name="text">
+            <string>Edit Slot</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QPushButton" name="deleteSlotButton">
+           <property name="text">
+            <string>Delete Slot</string>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </item>
+       <item>
+        <widget class="QTableView" name="slotsTable"/>
        </item>
       </layout>
      </widget>

@@ -11,28 +11,34 @@ CONFIG += c++17
 SOURCES += \
     adminwindow.cpp \
     appointmentform.cpp \
+    availableslots.cpp \
     doctorwindow.cpp \
     main.cpp \
     loginwindow.cpp \
     medicalrecord.cpp \
+    patientappointments.cpp \
     patientwindow.cpp \
     registerwindow.cpp
 
 HEADERS += \
     adminwindow.h \
     appointmentform.h \
+    availableslots.h \
     doctorwindow.h \
     loginwindow.h \
     medicalrecord.h \
+    patientappointments.h \
     patientwindow.h \
     registerwindow.h
 
 FORMS += \
     adminwindow.ui \
     appointmentform.ui \
+    availableslots.ui \
     doctorwindow.ui \
     loginwindow.ui \
     medicalrecord.ui \
+    patientappointments.ui \
     patientwindow.ui \
     registerwindow.ui
 

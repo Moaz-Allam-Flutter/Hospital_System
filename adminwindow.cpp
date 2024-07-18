@@ -50,7 +50,7 @@ void AdminWindow::saveUserList()
         QString username = ui->tableWidget->item(row, 0)->text();
         QString age = ui->tableWidget->item(row, 1)->text();
         QString role = ui->tableWidget->item(row, 2)->text();
-        QString password = "defaultpassword";  // Default password for new users
+        QString password = "123";  // Default password for new users
 
         out << username << "," << password << "," << role << "," << age << "\n";
     }

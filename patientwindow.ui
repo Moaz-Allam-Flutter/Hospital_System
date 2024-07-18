@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>612</width>
-    <height>417</height>
+    <width>673</width>
+    <height>439</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -55,21 +55,21 @@ QPushButton:pressed {
    <item>
     <widget class="QPushButton" name="btnFillMedicalRecord">
      <property name="text">
-      <string>Fill a Medical Record</string>
+      <string>Check Available Slots</string>
      </property>
     </widget>
    </item>
    <item>
     <widget class="QPushButton" name="btnMessageHealthcareProvider">
      <property name="text">
-      <string>Message a Healthcare Provider</string>
+      <string>My Appointments</string>
      </property>
     </widget>
    </item>
    <item>
     <widget class="QPushButton" name="btnPastAppointments">
      <property name="text">
-      <string>Past Appointments</string>
+      <string>Update my Medical Record</string>
      </property>
     </widget>
    </item>

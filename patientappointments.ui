@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>PatientAppointments</class>
+ <widget class="QDialog" name="PatientAppointments">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>688</width>
+    <height>569</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Dialog</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">QDialog {
+    background-color: #f7f9fc;
+    font-family: 'Arial', sans-serif;
+    font-size: 14px;
+    padding: 20px;
+    border-radius: 8px;
+}
+
+QLabel {
+    color: #000;
+    margin-bottom: 10px;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+QTableView {
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    background-color: #ffffff;
+    color: #000;
+}
+
+QTableView::item {
+    padding: 10px;
+}
+
+QTableView::item:selected {
+    background-color: #007acc;
+    color: #fff;
+}
+
+QTableView::item:disabled {
+    background-color: #d3d3d3;
+}
+
+QTableView QHeaderView::section {
+    background-color: #f1f1f1;
+    padding: 8px;
+    border: 1px solid #ccc;
+}
+
+QPushButton {
+    background-color: #0094ff;
+    color: #fbfbfe;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+QPushButton:hover {
+    background-color: #433bff;
+}
+
+QPushButton:pressed {
+    background-color: #2118d8;
+    padding-left: 15px;
+    padding-top: 15px;
+}</string>
+  </property>
+  <widget class="QWidget" name="">
+   <property name="geometry">
+    <rect>
+     <x>20</x>
+     <y>20</y>
+     <width>651</width>
+     <height>521</height>
+    </rect>
+   </property>
+   <layout class="QVBoxLayout" name="verticalLayout">
+    <item>
+     <widget class="QLabel" name="titleLabel">
+      <property name="styleSheet">
+       <string notr="true">
+         QLabel {
+             font-size: 18px;
+             font-weight: bold;
+         }
+        </string>
+      </property>
+      <property name="text">
+       <string>My Appointments</string>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QTableWidget" name="tableWidget">
+      <column>
+       <property name="text">
+        <string>Id</string>
+       </property>
+      </column>
+      <column>
+       <property name="text">
+        <string>Doctor</string>
+       </property>
+      </column>
+      <column>
+       <property name="text">
+        <string>Date</string>
+       </property>
+      </column>
+      <column>
+       <property name="text">
+        <string>Slot Id</string>
+       </property>
+      </column>
+     </widget>
+    </item>
+    <item>
+     <layout class="QHBoxLayout" name="horizontalLayout">
+      <item>
+       <widget class="QPushButton" name="addAppointmentButton">
+        <property name="text">
+         <string>Add</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QPushButton" name="editAppointmentButton">
+        <property name="text">
+         <string>Edit</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QPushButton" name="deleteAppointmentButton">
+        <property name="text">
+         <string>Delete</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </item>
+   </layout>
+  </widget>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

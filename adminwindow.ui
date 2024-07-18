@@ -53,7 +53,10 @@ QLabel {
 QLineEdit, QComboBox {
     padding: 5px;
     border: 1px solid #ccc;
+    background-color: #dedcff;
+    color: #050315;
     border-radius: 4px;
+    font-size: 14px;
 }
 
 QLineEdit:focus, QComboBox:focus {
@@ -83,7 +86,6 @@ QPushButton#pushButtonUpdate, QPushButton#pushButtonDelete {
     border: none;
     border-radius: 4px;
     font-size: 14px;
-    font-weight: bold;
 }
 
 QPushButton#pushButtonUpdate:hover, QPushButton#pushButtonDelete:hover {
@@ -97,7 +99,6 @@ QPushButton#pushButtonDeleteAppointment {
     border: none;
     border-radius: 4px;
     font-size: 14px;
-    font-weight: bold;
 }
 
 QPushButton#pushButtonDeleteAppointment:hover {
@@ -212,6 +213,12 @@ QTableWidget::column {
          </item>
          <item>
           <widget class="QPushButton" name="pushButtonUpdate">
+           <property name="font">
+            <font>
+             <pointsize>-1</pointsize>
+             <bold>false</bold>
+            </font>
+           </property>
            <property name="text">
             <string>Update</string>
            </property>
@@ -219,6 +226,12 @@ QTableWidget::column {
          </item>
          <item>
           <widget class="QPushButton" name="pushButtonDelete">
+           <property name="font">
+            <font>
+             <pointsize>-1</pointsize>
+             <bold>false</bold>
+            </font>
+           </property>
            <property name="text">
             <string>Delete</string>
            </property>
