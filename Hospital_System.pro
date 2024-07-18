@@ -14,6 +14,7 @@ SOURCES += \
     doctorwindow.cpp \
     main.cpp \
     loginwindow.cpp \
+    medicalrecord.cpp \
     patientwindow.cpp \
     registerwindow.cpp
 
@@ -22,6 +23,7 @@ HEADERS += \
     appointmentform.h \
     doctorwindow.h \
     loginwindow.h \
+    medicalrecord.h \
     patientwindow.h \
     registerwindow.h
 
@@ -30,6 +32,7 @@ FORMS += \
     appointmentform.ui \
     doctorwindow.ui \
     loginwindow.ui \
+    medicalrecord.ui \
     patientwindow.ui \
     registerwindow.ui
 

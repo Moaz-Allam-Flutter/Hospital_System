@@ -7,35 +7,175 @@
     <x>0</x>
     <y>0</y>
     <width>704</width>
-    <height>480</height>
+    <height>474</height>
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Dialog</string>
+   <string>Doctor Window</string>
   </property>
-  <widget class="QTabWidget" name="tabWidget">
-   <property name="geometry">
-    <rect>
-     <x>10</x>
-     <y>10</y>
-     <width>681</width>
-     <height>461</height>
-    </rect>
-   </property>
-   <property name="currentIndex">
-    <number>0</number>
-   </property>
-   <widget class="QWidget" name="tab">
-    <attribute name="title">
-     <string>Appointments</string>
-    </attribute>
-   </widget>
-   <widget class="QWidget" name="tab_2">
-    <attribute name="title">
-     <string>Medical Records</string>
-    </attribute>
-   </widget>
-  </widget>
+  <layout class="QVBoxLayout" name="verticalLayout">
+   <item>
+    <widget class="QTabWidget" name="tabWidget">
+     <property name="styleSheet">
+      <string notr="true">/* General Styles */
+QWidget {
+    background-color: #fbfbfe;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 18px;
+    color: #050315;
+}
+
+/* QLabel Styles */
+QLabel {
+    color: #050315;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+/* QLineEdit Styles */
+QLineEdit {
+    background-color: #dedcff;
+    border: 1px solid #2118d8;
+    border-radius: 5px;
+    padding: 5px;
+    font-size: 18px;
+    color: #050315;
+}
+
+/* QTextEdit Styles */
+QTextEdit {
+    background-color: #dedcff;
+    border: 1px solid #2118d8;
+    border-radius: 5px;
+    padding: 5px;
+    font-size: 18px;
+    color: #050315;
+}
+
+/* QPushButton Styles */
+QPushButton {
+    background-color: #0094ff;
+    color: #fbfbfe;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+QPushButton:hover {
+    background-color: #433bff;
+}
+
+QPushButton:pressed {
+    background-color: #2118d8;
+    padding-left: 15px;
+    padding-top: 15px;
+}
+
+/* Save Button Specific Styles */
+QPushButton#pushButtonSave {
+    background-color: #0094ff;
+    color: #fbfbfe;
+}
+
+QPushButton#pushButtonSave:hover {
+    background-color: #433bff;
+}
+
+QPushButton#pushButtonSave:pressed {
+    background-color: #2118d8;
+    padding-left: 15px;
+    padding-top: 15px;
+}
+</string>
+     </property>
+     <property name="currentIndex">
+      <number>1</number>
+     </property>
+     <widget class="QWidget" name="appointmentsTab">
+      <attribute name="title">
+       <string>Appointments</string>
+      </attribute>
+      <layout class="QVBoxLayout" name="verticalLayout_2">
+       <item>
+        <widget class="QTableView" name="appointmentsTable"/>
+       </item>
+       <item>
+        <layout class="QHBoxLayout" name="buttonsLayout">
+         <item>
+          <widget class="QPushButton" name="addAppointmentButton">
+           <property name="text">
+            <string>Add</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QPushButton" name="editAppointmentButton">
+           <property name="text">
+            <string>Edit</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QPushButton" name="deleteAppointmentButton">
+           <property name="text">
+            <string>Delete</string>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </item>
+      </layout>
+     </widget>
+     <widget class="QWidget" name="medicalRecordsTab">
+      <attribute name="title">
+       <string>Medical Records</string>
+      </attribute>
+      <layout class="QVBoxLayout" name="verticalLayout_3">
+       <item>
+        <widget class="QLineEdit" name="searchBar">
+         <property name="placeholderText">
+          <string>Search Patient</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QListView" name="patientList"/>
+       </item>
+       <item>
+        <widget class="QTextEdit" name="medicalRecordDetails"/>
+       </item>
+       <item>
+        <layout class="QHBoxLayout" name="buttonsLayout2">
+         <item>
+          <widget class="QPushButton" name="addRecordButton">
+           <property name="text">
+            <string>Add</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QPushButton" name="editRecordButton">
+           <property name="text">
+            <string>Edit</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QPushButton" name="deleteRecordButton">
+           <property name="text">
+            <string>Delete</string>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </item>
+      </layout>
+     </widget>
+    </widget>
+   </item>
+  </layout>
  </widget>
  <resources/>
  <connections/>

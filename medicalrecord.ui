@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>medicalrecord</class>
+ <widget class="QDialog" name="medicalrecord">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>600</width>
+    <height>676</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Medical Record</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">QDialog {
+    background-color: #f7f9fc;
+    font-family: 'Arial', sans-serif;
+    font-size: 14px;
+    padding: 20px;
+    border-radius: 8px;
+}
+
+QLabel {
+    color: #333;
+    margin-bottom: 10px;
+}
+
+QLineEdit, QComboBox, QTextEdit {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    background-color: #ffffff;
+    color: #000;  /* Text color set to black */
+}
+
+QLineEdit:focus, QComboBox:focus, QTextEdit:focus {
+    border-color: #007acc;
+    box-shadow: 0 0 5px rgba(0, 122, 204, 0.5);
+}
+
+QPushButton {
+    background-color: #0094ff;
+    color: #fff;
+    padding: 12px 18px;
+    border: none;
+    border-radius: 6px;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+QPushButton:hover {
+    background-color: #218838;
+}
+
+QPushButton#pushButtonSave {
+    background-color: #0094ff;
+}
+
+QPushButton#pushButtonSave:hover {
+    background-color: #218838;
+}
+
+QFormLayout {
+    spacing: 10px;
+    margin-bottom: 20px;
+}
+
+QFormLayout QLineEdit, QFormLayout QComboBox, QFormLayout QTextEdit {
+    min-width: 250px;
+}
+
+QComboBox::drop-down {
+    border-left: 1px solid #ccc;
+}
+
+QDateEdit, QTimeEdit {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    background-color: #ffffff;
+    color: #000;  /* Text color set to black */
+}
+
+QDateEdit::down-arrow, QTimeEdit::down-arrow {
+   color: #000;
+}
+
+QDateEdit:focus, QTimeEdit:focus {
+    border-color: #007acc;
+    box-shadow: 0 0 5px rgba(0, 122, 204, 0.5);
+}
+</string>
+  </property>
+  <layout class="QVBoxLayout" name="verticalLayout">
+   <item>
+    <widget class="QLabel" name="labelTitle">
+     <property name="text">
+      <string>Patient Medical Record</string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignmentFlag::AlignCenter</set>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <widget class="QLabel" name="labelPatientInfo">
+     <property name="text">
+      <string>Patient Information:</string>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <widget class="QLineEdit" name="lineEditName">
+     <property name="placeholderText">
+      <string>Name</string>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <widget class="QLineEdit" name="lineEditAge">
+     <property name="placeholderText">
+      <string>Age</string>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <widget class="QLabel" name="labelMedicalHistory">
+     <property name="text">
+      <string>Medical History:</string>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <widget class="QTextEdit" name="textEditHistory"/>
+   </item>
+   <item>
+    <widget class="QLabel" name="labelCurrentMedications">
+     <property name="text">
+      <string>Current Medications:</string>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <widget class="QTextEdit" name="textEditMedications"/>
+   </item>
+   <item>
+    <widget class="QLabel" name="labelAppointments">
+     <property name="text">
+      <string>Appointments:</string>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <widget class="QTextEdit" name="textEditAppointments"/>
+   </item>
+   <item>
+    <widget class="QLabel" name="labelNotes">
+     <property name="text">
+      <string>Notes:</string>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <widget class="QTextEdit" name="textEditNotes"/>
+   </item>
+   <item>
+    <widget class="QPushButton" name="pushButtonSave">
+     <property name="text">
+      <string>Save</string>
+     </property>
+    </widget>
+   </item>
+  </layout>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
