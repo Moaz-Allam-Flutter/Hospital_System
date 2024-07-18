@@ -1,2 +1,0 @@
-Admin,admin,Admin,29
-Moaz,123,Doctor,24
