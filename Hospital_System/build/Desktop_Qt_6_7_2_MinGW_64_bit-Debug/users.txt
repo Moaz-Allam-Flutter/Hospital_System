@@ -1,0 +1,5 @@
+Admin,admin,Admin,25
+Moaz_Allam,123,Doctor,24
+Kiro,123,Patient,24
+Kiro_Amir,123,Patient,2023
+Ahmed,123,Doctor,24

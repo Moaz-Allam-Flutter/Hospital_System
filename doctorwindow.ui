@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>704</width>
-    <height>474</height>
+    <width>587</width>
+    <height>510</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -45,11 +45,29 @@ QLineEdit {
 /* QTextEdit Styles */
 QTextEdit {
     background-color: #dedcff;
+    border: 4px solid #2118d8;
+    border-radius: 5px;
+    padding: 5px;
+    font-size: 18px;
+    color: #050315;
+}
+
+/* QTableWidget Styles */
+QTableWidget {
+    background-color: #ffffff;
     border: 1px solid #2118d8;
     border-radius: 5px;
     padding: 5px;
     font-size: 18px;
     color: #050315;
+    gridline-color: #2118d8;
+}
+
+QHeaderView::section {
+    background-color: #0094ff;
+    color: #fbfbfe;
+    padding: 5px;
+    border: none;
 }
 
 /* QPushButton Styles */
@@ -73,17 +91,41 @@ QPushButton:pressed {
     padding-top: 15px;
 }
 
-/* Save Button Specific Styles */
-QPushButton#pushButtonSave {
+/* Specific Button Styles */
+QPushButton#addAppointmentButton,
+QPushButton#editAppointmentButton,
+QPushButton#deleteAppointmentButton,
+QPushButton#addRecordButton,
+QPushButton#editRecordButton,
+QPushButton#deleteRecordButton,
+QPushButton#addSlotButton,
+QPushButton#editSlotButton,
+QPushButton#deleteSlotButton {
     background-color: #0094ff;
     color: #fbfbfe;
 }
 
-QPushButton#pushButtonSave:hover {
+QPushButton#addAppointmentButton:hover,
+QPushButton#editAppointmentButton:hover,
+QPushButton#deleteAppointmentButton:hover,
+QPushButton#addRecordButton:hover,
+QPushButton#editRecordButton:hover,
+QPushButton#deleteRecordButton:hover,
+QPushButton#addSlotButton:hover,
+QPushButton#editSlotButton:hover,
+QPushButton#deleteSlotButton:hover {
     background-color: #433bff;
 }
 
-QPushButton#pushButtonSave:pressed {
+QPushButton#addAppointmentButton:pressed,
+QPushButton#editAppointmentButton:pressed,
+QPushButton#deleteAppointmentButton:pressed,
+QPushButton#addRecordButton:pressed,
+QPushButton#editRecordButton:pressed,
+QPushButton#deleteRecordButton:pressed,
+QPushButton#addSlotButton:pressed,
+QPushButton#editSlotButton:pressed,
+QPushButton#deleteSlotButton:pressed {
     background-color: #2118d8;
     padding-left: 15px;
     padding-top: 15px;
@@ -91,7 +133,7 @@ QPushButton#pushButtonSave:pressed {
 </string>
      </property>
      <property name="currentIndex">
-      <number>0</number>
+      <number>2</number>
      </property>
      <widget class="QWidget" name="appointmentsTab">
       <attribute name="title">
@@ -100,6 +142,9 @@ QPushButton#pushButtonSave:pressed {
       <layout class="QVBoxLayout" name="verticalLayout_2">
        <item>
         <widget class="QTableWidget" name="tableWidget">
+         <property name="columnCount">
+          <number>3</number>
+         </property>
          <column>
           <property name="text">
            <string>Slot Id</string>
@@ -122,7 +167,7 @@ QPushButton#pushButtonSave:pressed {
          <item>
           <widget class="QPushButton" name="deleteAppointmentButton">
            <property name="text">
-            <string>Cencel Appointment</string>
+            <string>Cancel Appointment</string>
            </property>
           </widget>
          </item>
@@ -144,14 +189,12 @@ QPushButton#pushButtonSave:pressed {
        </item>
        <item>
         <widget class="QTableWidget" name="tableWidget_3">
+         <property name="columnCount">
+          <number>4</number>
+         </property>
          <column>
           <property name="text">
            <string>Patient Name</string>
-          </property>
-         </column>
-         <column>
-          <property name="text">
-           <string>New Column</string>
           </property>
          </column>
          <column>
@@ -254,6 +297,9 @@ QPushButton#pushButtonSave:pressed {
        </item>
        <item>
         <widget class="QTableWidget" name="tableWidget_2">
+         <property name="columnCount">
+          <number>5</number>
+         </property>
          <column>
           <property name="text">
            <string>Slot Id</string>
@@ -262,6 +308,11 @@ QPushButton#pushButtonSave:pressed {
          <column>
           <property name="text">
            <string>Date</string>
+          </property>
+         </column>
+         <column>
+          <property name="text">
+           <string>Status</string>
           </property>
          </column>
          <column>

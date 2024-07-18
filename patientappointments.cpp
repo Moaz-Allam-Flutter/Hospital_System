@@ -87,7 +87,7 @@ void PatientAppointments::on_editAppointmentButton_clicked()
             QString slotLine = slotIn.readLine();
             QStringList slotFields = slotLine.split(",");
             if (slotFields[0] == newSlotId) {
-                if (slotFields[5] == "Yes") {
+                if (slotFields[5] == "Available") {
                     newSlotAvailable = true;
                 }
             }
@@ -144,10 +144,10 @@ void PatientAppointments::on_editAppointmentButton_clicked()
             QString slotLine = updatedSlotIn.readLine();
             QStringList slotFields = slotLine.split(",");
             if (slotFields[0] == oldSlotId) {
-                slotFields[5] = "Yes";  // Make the old slot available
+                slotFields[5] = "Available";  // Make the old slot available
                 slotLine = slotFields.join(",");
             } else if (slotFields[0] == newSlotId) {
-                slotFields[5] = "No";  // Make the new slot unavailable
+                slotFields[5] = "Not Available";  // Make the new slot unavailable
                 slotLine = slotFields.join(",");
             }
             updatedSlotLines << slotLine;
@@ -221,7 +221,7 @@ void PatientAppointments::on_deleteAppointmentButton_clicked()
         QString slotLine = slotIn.readLine();
         QStringList slotFields = slotLine.split(",");
         if (slotFields[0] == slotId) {
-            slotFields[5] = "Yes";  // Make the slot available
+            slotFields[5] = "Available";  // Make the slot available
             slotLine = slotFields.join(",");
         }
         slotLines << slotLine;

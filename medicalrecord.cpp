@@ -22,10 +22,6 @@ medicalrecord::~medicalrecord()
 
 void medicalrecord::on_pushButtonSave_clicked()
 {
-    // Retrieve the current user
-    CurrentUser *user = CurrentUser::instance();
-    QString username = user->getUsername();
-
     // Retrieve data from the form
     QString name = ui->lineEditName->text();
     QString age = ui->lineEditAge->text();
@@ -34,8 +30,7 @@ void medicalrecord::on_pushButtonSave_clicked()
     QString notes = ui->textEditNotes->toPlainText();
 
     // Create a string to be saved
-    QString recordData = QString("%1,%2,%3,%4,%5,%6")
-                             .arg(username)
+    QString recordData = QString("%1,%2,%3,%4,%5")
                              .arg(name)
                              .arg(age)
                              .arg(medicalHistory)
@@ -76,11 +71,11 @@ void medicalrecord::loadRecord()
         QStringList fields = line.split(",");
         if (fields[0] == username) {
             // Populate the form fields with the data from the record
-            ui->lineEditName->setText(fields[1]);
-            ui->lineEditAge->setText(fields[2]);
-            ui->textEditHistory->setPlainText(fields[3]);
-            ui->textEditMedications->setPlainText(fields[4]);
-            ui->textEditNotes->setPlainText(fields[5]);
+            ui->lineEditName->setText(fields[0]);
+            ui->lineEditAge->setText(fields[1]);
+            ui->textEditHistory->setPlainText(fields[2]);
+            ui->textEditMedications->setPlainText(fields[3]);
+            ui->textEditNotes->setPlainText(fields[4]);
             file.close();
             return;
         }

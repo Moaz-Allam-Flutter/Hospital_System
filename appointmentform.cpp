@@ -48,7 +48,7 @@ void AppointmentForm::loadSlots(const QString &doctor)
     while (!in.atEnd()) {
         QString line = in.readLine();
         QStringList fields = line.split(",");
-        if (fields[1] == doctor && fields[5] == "Yes") {
+        if (fields[1] == doctor && fields[3] == "Available") {
             ui->comboBoxAvailableSlots->addItem(fields[0]); // Display only SlotId
         }
     }
@@ -68,6 +68,7 @@ void AppointmentForm::on_btnBookAppointment_clicked()
     QString contactNumber = ui->lineEditContactNumber->text();
     QString doctor = ui->comboBoxDoctor->currentText();
     QString slot = ui->comboBoxAvailableSlots->currentText(); // Retrieve SlotId directly
+    QString status = "Confirmed";
 
     if (patientName.isEmpty() || contactNumber.isEmpty() || doctor.isEmpty() || slot.isEmpty()) {
         // Handle validation error (show message to user)
@@ -83,10 +84,10 @@ void AppointmentForm::on_btnBookAppointment_clicked()
         return;
 
     QTextStream out(&appointmentsFile);
-    out << appointmentId << "," << slot << "," << patientName << "," << contactNumber << "," << doctor << "\n";
+    out << appointmentId << "," << slot << "," << patientName << "," << contactNumber << "," << doctor << "," << status << "\n";
     appointmentsFile.close();
 
-    // Update the slot to "No" in slots.txt
+    // Update the slot to "Not Available" in slots.txt
     QFile slotsFile("slots.txt");
     if (!slotsFile.open(QIODevice::ReadOnly | QIODevice::Text))
         return;
@@ -97,7 +98,7 @@ void AppointmentForm::on_btnBookAppointment_clicked()
         QString line = in.readLine();
         QStringList fields = line.split(",");
         if (fields[0] == slot) {
-            fields[5] = "No"; // Update availability
+            fields[3] = "Not Available"; // Update availability
             line = fields.join(",");
         }
         lines.append(line);
