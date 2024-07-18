@@ -6,36 +6,332 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>704</width>
-    <height>480</height>
+    <width>800</width>
+    <height>600</height>
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Dialog</string>
+   <string>Doctor Window</string>
   </property>
-  <widget class="QTabWidget" name="tabWidget">
-   <property name="geometry">
-    <rect>
-     <x>10</x>
-     <y>10</y>
-     <width>681</width>
-     <height>461</height>
-    </rect>
-   </property>
-   <property name="currentIndex">
-    <number>0</number>
-   </property>
-   <widget class="QWidget" name="tab">
-    <attribute name="title">
-     <string>Appointments</string>
-    </attribute>
-   </widget>
-   <widget class="QWidget" name="tab_2">
-    <attribute name="title">
-     <string>Medical Records</string>
-    </attribute>
-   </widget>
-  </widget>
+  <layout class="QVBoxLayout" name="verticalLayout">
+   <item>
+    <widget class="QTabWidget" name="tabWidget">
+     <property name="styleSheet">
+      <string notr="true">/* General Styles */
+QWidget {
+    background-color: #fbfbfe;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 18px;
+    color: #050315;
+}
+
+/* QLabel Styles */
+QLabel {
+    color: #050315;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+/* QLineEdit Styles */
+QLineEdit {
+    background-color: #dedcff;
+    border: 1px solid #2118d8;
+    border-radius: 5px;
+    padding: 5px;
+    font-size: 18px;
+    color: #050315;
+}
+
+/* QTextEdit Styles */
+QTextEdit {
+    background-color: #dedcff;
+    border: 4px solid #2118d8;
+    border-radius: 5px;
+    padding: 5px;
+    font-size: 18px;
+    color: #050315;
+}
+
+/* QTableWidget Styles */
+QTableWidget {
+    background-color: #ffffff;
+    border: 1px solid #2118d8;
+    border-radius: 5px;
+    padding: 5px;
+    font-size: 18px;
+    color: #050315;
+    gridline-color: #2118d8;
+}
+
+QHeaderView::section {
+    background-color: #0094ff;
+    color: #fbfbfe;
+    padding: 5px;
+    border: none;
+}
+
+/* QPushButton Styles */
+QPushButton {
+    background-color: #0094ff;
+    color: #fbfbfe;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+QPushButton:hover {
+    background-color: #433bff;
+}
+
+QPushButton:pressed {
+    background-color: #2118d8;
+    padding-left: 15px;
+    padding-top: 15px;
+}
+
+/* Specific Button Styles */
+QPushButton#addAppointmentButton,
+QPushButton#editAppointmentButton,
+QPushButton#deleteAppointmentButton,
+QPushButton#addRecordButton,
+QPushButton#editRecordButton,
+QPushButton#deleteRecordButton,
+QPushButton#addSlotButton,
+QPushButton#editSlotButton,
+QPushButton#deleteSlotButton {
+    background-color: #0094ff;
+    color: #fbfbfe;
+}
+
+QPushButton#addAppointmentButton:hover,
+QPushButton#editAppointmentButton:hover,
+QPushButton#deleteAppointmentButton:hover,
+QPushButton#addRecordButton:hover,
+QPushButton#editRecordButton:hover,
+QPushButton#deleteRecordButton:hover,
+QPushButton#addSlotButton:hover,
+QPushButton#editSlotButton:hover,
+QPushButton#deleteSlotButton:hover {
+    background-color: #433bff;
+}
+
+QPushButton#addAppointmentButton:pressed,
+QPushButton#editAppointmentButton:pressed,
+QPushButton#deleteAppointmentButton:pressed,
+QPushButton#addRecordButton:pressed,
+QPushButton#editRecordButton:pressed,
+QPushButton#deleteRecordButton:pressed,
+QPushButton#addSlotButton:pressed,
+QPushButton#editSlotButton:pressed,
+QPushButton#deleteSlotButton:pressed {
+    background-color: #2118d8;
+    padding-left: 15px;
+    padding-top: 15px;
+}
+</string>
+     </property>
+     <property name="currentIndex">
+      <number>0</number>
+     </property>
+     <widget class="QWidget" name="appointmentsTab">
+      <attribute name="title">
+       <string>Appointments</string>
+      </attribute>
+      <layout class="QVBoxLayout" name="verticalLayout_2">
+       <item>
+        <widget class="QTableWidget" name="tableWidget">
+         <property name="columnCount">
+          <number>3</number>
+         </property>
+         <column>
+          <property name="text">
+           <string>Slot Id</string>
+          </property>
+         </column>
+         <column>
+          <property name="text">
+           <string>Patient Name</string>
+          </property>
+         </column>
+         <column>
+          <property name="text">
+           <string>Contact Number</string>
+          </property>
+         </column>
+        </widget>
+       </item>
+       <item>
+        <layout class="QHBoxLayout" name="buttonsLayout">
+         <item>
+          <widget class="QPushButton" name="deleteAppointmentButton">
+           <property name="text">
+            <string>Cancel Appointment</string>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </item>
+      </layout>
+     </widget>
+     <widget class="QWidget" name="medicalRecordsTab">
+      <attribute name="title">
+       <string>Medical Records</string>
+      </attribute>
+      <layout class="QVBoxLayout" name="verticalLayout_3">
+       <item>
+        <widget class="QLineEdit" name="searchBar">
+         <property name="placeholderText">
+          <string>Search Patient</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QTableWidget" name="tableWidget_3">
+         <property name="columnCount">
+          <number>4</number>
+         </property>
+         <column>
+          <property name="text">
+           <string>Patient Name</string>
+          </property>
+         </column>
+         <column>
+          <property name="text">
+           <string>Medical History</string>
+          </property>
+         </column>
+         <column>
+          <property name="text">
+           <string>Current Medication</string>
+          </property>
+         </column>
+         <column>
+          <property name="text">
+           <string>Notes</string>
+          </property>
+         </column>
+        </widget>
+       </item>
+       <item>
+        <layout class="QHBoxLayout" name="buttonsLayout2"/>
+       </item>
+      </layout>
+     </widget>
+     <widget class="QWidget" name="slotsTab">
+      <attribute name="title">
+       <string>Slots</string>
+      </attribute>
+      <layout class="QVBoxLayout" name="verticalLayout_4">
+       <item>
+        <layout class="QHBoxLayout" name="slotDetailsLayout">
+         <item>
+          <widget class="QLabel" name="slotDateLabel">
+           <property name="text">
+            <string>Date</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QDateEdit" name="slotDateEdit"/>
+         </item>
+        </layout>
+       </item>
+       <item>
+        <layout class="QHBoxLayout" name="slotTimeLayout">
+         <item>
+          <widget class="QLabel" name="slotTimeLabel">
+           <property name="text">
+            <string>Time</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QTimeEdit" name="slotTimeEdit"/>
+         </item>
+        </layout>
+       </item>
+       <item>
+        <layout class="QHBoxLayout" name="slotDurationLayout">
+         <item>
+          <widget class="QLabel" name="slotDurationLabel">
+           <property name="text">
+            <string>Duration</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QSpinBox" name="slotDurationSpinBox">
+           <property name="suffix">
+            <string> mins</string>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </item>
+       <item>
+        <layout class="QHBoxLayout" name="slotButtonsLayout">
+         <item>
+          <widget class="QPushButton" name="addSlotButton">
+           <property name="text">
+            <string>Add Slot</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QPushButton" name="editSlotButton">
+           <property name="text">
+            <string>Edit Slot</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QPushButton" name="deleteSlotButton">
+           <property name="text">
+            <string>Delete Slot</string>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </item>
+       <item>
+        <widget class="QTableWidget" name="tableWidget_2">
+         <property name="columnCount">
+          <number>5</number>
+         </property>
+         <column>
+          <property name="text">
+           <string>Slot Id</string>
+          </property>
+         </column>
+         <column>
+          <property name="text">
+           <string>Date</string>
+          </property>
+         </column>
+         <column>
+          <property name="text">
+           <string>Status</string>
+          </property>
+         </column>
+         <column>
+          <property name="text">
+           <string>Time</string>
+          </property>
+         </column>
+         <column>
+          <property name="text">
+           <string>Duration</string>
+          </property>
+         </column>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+    </widget>
+   </item>
+  </layout>
  </widget>
  <resources/>
  <connections/>
