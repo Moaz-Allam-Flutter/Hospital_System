@@ -57,7 +57,6 @@ void AdminWindow::loadAppointmentList()
 {
     QFile file("appointments.txt");
     if (!file.open(QIODevice::ReadOnly | QIODevice::Text)) {
-        QMessageBox::warning(this, "Error", "Unable to open appointments file.");
         return;
     }
 

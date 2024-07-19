@@ -21,8 +21,8 @@ private slots:
     void on_editSlotButton_clicked();
     void on_deleteSlotButton_clicked();
     void on_searchMedicalRecords_textChanged(const QString &text);
-    void loadAppointmentsForDoctor(); // Add this declaration
-    void on_deleteAppointmentButton_clicked(); // Add this declaration
+    void loadAppointmentsForDoctor();
+    void on_deleteAppointmentButton_clicked();
 
 private:
     void initializeAppointmentsTable();

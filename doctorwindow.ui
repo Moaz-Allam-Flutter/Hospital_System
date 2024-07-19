@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>587</width>
-    <height>510</height>
+    <width>924</width>
+    <height>597</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -143,8 +143,13 @@ QPushButton#deleteSlotButton:pressed {
        <item>
         <widget class="QTableWidget" name="tableWidget">
          <property name="columnCount">
-          <number>3</number>
+          <number>5</number>
          </property>
+         <column>
+          <property name="text">
+           <string>Appointment Id</string>
+          </property>
+         </column>
          <column>
           <property name="text">
            <string>Slot Id</string>
@@ -158,6 +163,11 @@ QPushButton#deleteSlotButton:pressed {
          <column>
           <property name="text">
            <string>Contact Number</string>
+          </property>
+         </column>
+         <column>
+          <property name="text">
+           <string>Status</string>
           </property>
          </column>
         </widget>

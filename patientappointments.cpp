@@ -144,10 +144,10 @@ void PatientAppointments::on_editAppointmentButton_clicked()
             QString slotLine = updatedSlotIn.readLine();
             QStringList slotFields = slotLine.split(",");
             if (slotFields[0] == oldSlotId) {
-                slotFields[5] = "Available";  // Make the old slot available
+                slotFields[3] = "Available";  // Make the old slot available
                 slotLine = slotFields.join(",");
             } else if (slotFields[0] == newSlotId) {
-                slotFields[5] = "Not Available";  // Make the new slot unavailable
+                slotFields[3] = "Not Available";  // Make the new slot unavailable
                 slotLine = slotFields.join(",");
             }
             updatedSlotLines << slotLine;

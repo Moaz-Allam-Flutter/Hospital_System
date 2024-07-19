@@ -61,7 +61,6 @@ void medicalrecord::loadRecord()
     // Open records.txt for reading
     QFile file("records.txt");
     if (!file.open(QIODevice::ReadOnly | QIODevice::Text)) {
-        QMessageBox::warning(this, "Load Error", "Failed to open records.txt for reading.");
         return;
     }
 

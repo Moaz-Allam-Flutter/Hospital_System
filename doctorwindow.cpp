@@ -4,6 +4,7 @@
 #include <QFile>
 #include <QTextStream>
 #include <QRandomGenerator>
+#include <QMessageBox>
 #include "currentuser.h"
 
 // Constructor
@@ -21,7 +22,10 @@ DoctorWindow::DoctorWindow(QWidget *parent) :
     // Load data from files
     loadSlotsFromFile("slots.txt");
     loadMedicalRecordsFromFile("records.txt");
-    loadAppointmentsForDoctor(); // Add this line
+    loadAppointmentsForDoctor();
+
+    // Connect the search bar signal to the filter function
+    connect(ui->searchBar, &QLineEdit::textChanged, this, &DoctorWindow::filterMedicalRecordsTable);
 
 }
 
@@ -38,15 +42,15 @@ DoctorWindow::~DoctorWindow()
 void DoctorWindow::initializeAppointmentsTable()
 {
     // Set column count and headers for the appointments table
-    ui->tableWidget->setColumnCount(4); // Slot Id, Patient Name, Contact Number, Status
-    ui->tableWidget->setHorizontalHeaderLabels(QStringList() << "Slot Id" << "Patient Name" << "Contact Number" << "Status");
+    ui->tableWidget->setColumnCount(5); // Slot Id, Patient Name, Contact Number, Status
     ui->tableWidget->horizontalHeader()->setStretchLastSection(true);
 
     // Set column widths
-    ui->tableWidget->setColumnWidth(0, 120); // Slot Id
-    ui->tableWidget->setColumnWidth(1, 150); // Patient Name
-    ui->tableWidget->setColumnWidth(2, 150); // Contact Number
-    ui->tableWidget->setColumnWidth(3, 150); // Status
+    ui->tableWidget->setColumnWidth(0, 120); // App Id
+    ui->tableWidget->setColumnWidth(1, 120); // Slot Id
+    ui->tableWidget->setColumnWidth(2, 150); // Patient Name
+    ui->tableWidget->setColumnWidth(3, 150); // Contact Number
+    ui->tableWidget->setColumnWidth(4, 150); // Status
 }
 
 // Initialize the medical records table
@@ -96,6 +100,10 @@ void DoctorWindow::on_addSlotButton_clicked()
     QString time = ui->slotTimeEdit->time().toString("hh:mm");
     QString duration = QString::number(ui->slotDurationSpinBox->value()) + " mins";
 
+    // Retrieve the current user
+    CurrentUser *user = CurrentUser::instance();
+    QString currentUsername = user->getUsername();
+
     // Add a new row to the table
     int row = ui->tableWidget_2->rowCount();
     ui->tableWidget_2->insertRow(row);
@@ -104,10 +112,6 @@ void DoctorWindow::on_addSlotButton_clicked()
     ui->tableWidget_2->setItem(row, 2, new QTableWidgetItem(status));
     ui->tableWidget_2->setItem(row, 3, new QTableWidgetItem(time));
     ui->tableWidget_2->setItem(row, 4, new QTableWidgetItem(duration));
-
-    // Retrieve the current user
-    CurrentUser *user = CurrentUser::instance();
-    QString currentUsername = user->getUsername();
 
     // Save data to file
     saveSlotToFile("slots.txt", QString("%1,%2,%3,%4,%5,%6").arg(slotId).arg(currentUsername).arg(date).arg(status).arg(time).arg(duration));
@@ -182,13 +186,13 @@ void DoctorWindow::saveSlotsToFile(const QString& filename)
 void DoctorWindow::saveSlotToFile(const QString &filename, const QString &slotData)
 {
     QFile file(filename);
-    if (!file.open(QIODevice::Append | QIODevice::Text)) { // Use Append mode
+    if (!file.open(QIODevice::Append | QIODevice::Text)) {
         qDebug() << "Failed to open file for writing";
         return;
     }
 
     QTextStream out(&file);
-    out << slotData << "\n"; // Append new slot data
+    out << slotData << "\n";
 
     file.close();
 }
@@ -202,6 +206,10 @@ void DoctorWindow::loadSlotsFromFile(const QString& filename)
         return;
     }
 
+    // Retrieve the current user
+    CurrentUser *user = CurrentUser::instance();
+    QString currentUsername = user->getUsername();
+
     QTextStream in(&file);
     ui->tableWidget_2->setRowCount(0); // Clear existing data
 
@@ -209,20 +217,24 @@ void DoctorWindow::loadSlotsFromFile(const QString& filename)
         QString line = in.readLine();
         QStringList fields = line.split(",");
 
-        if (fields.size() < 5) {
+        if (fields.size() < 6) {
             qDebug() << "Incorrect data format in file";
             continue;
         }
 
-        int row = ui->tableWidget_2->rowCount();
-        ui->tableWidget_2->insertRow(row);
+        QString username = fields[1];
 
-        // Set items in the order: 0, 2, 5, 3, 4
-        ui->tableWidget_2->setItem(row, 0, new QTableWidgetItem(fields[0])); // Slot Id
-        ui->tableWidget_2->setItem(row, 1, new QTableWidgetItem(fields[2])); // Status (for example)
-        ui->tableWidget_2->setItem(row, 2, new QTableWidgetItem(fields[5])); // Duration (for example)
-        ui->tableWidget_2->setItem(row, 3, new QTableWidgetItem(fields[3])); // Time
-        ui->tableWidget_2->setItem(row, 4, new QTableWidgetItem(fields[4])); // Date
+        if (username == currentUsername) {
+            int row = ui->tableWidget_2->rowCount();
+            ui->tableWidget_2->insertRow(row);
+
+            // Set items in the order: Slot Id, Date, Status, Time, Duration
+            ui->tableWidget_2->setItem(row, 0, new QTableWidgetItem(fields[0])); // Slot Id
+            ui->tableWidget_2->setItem(row, 1, new QTableWidgetItem(fields[2])); // Date
+            ui->tableWidget_2->setItem(row, 2, new QTableWidgetItem(fields[3])); // Status
+            ui->tableWidget_2->setItem(row, 3, new QTableWidgetItem(fields[4])); // Time
+            ui->tableWidget_2->setItem(row, 4, new QTableWidgetItem(fields[5])); // Duration
+        }
     }
 
     file.close();
@@ -308,13 +320,10 @@ void DoctorWindow::filterMedicalRecordsTable(const QString &searchText)
     }
 }
 
-// Slot for search text changed
 void DoctorWindow::on_searchMedicalRecords_textChanged(const QString &text)
 {
-    qDebug() << "Search text changed to:" << text;
     filterMedicalRecordsTable(text);
 }
-
 
 
 void DoctorWindow::loadAppointmentsForDoctor()
@@ -325,7 +334,6 @@ void DoctorWindow::loadAppointmentsForDoctor()
 
     QFile file("appointments.txt");
     if (!file.open(QIODevice::ReadOnly | QIODevice::Text)) {
-        qDebug() << "Failed to open file for reading";
         return;
     }
 
@@ -342,77 +350,68 @@ void DoctorWindow::loadAppointmentsForDoctor()
         }
 
         QString doctorName = fields[4];
-        QString status = fields[5];
 
         if (doctorName == currentUsername) {
             int row = ui->tableWidget->rowCount();
             ui->tableWidget->insertRow(row);
 
-            ui->tableWidget->setItem(row, 0, new QTableWidgetItem(fields[1])); // Slot Id
-            ui->tableWidget->setItem(row, 1, new QTableWidgetItem(fields[2])); // Patient Name
-            ui->tableWidget->setItem(row, 2, new QTableWidgetItem(fields[3])); // Contact Number
-            ui->tableWidget->setItem(row, 3, new QTableWidgetItem(fields[5]));     // Status
+            ui->tableWidget->setItem(row, 0, new QTableWidgetItem(fields[0])); // Appiontment Id
+            ui->tableWidget->setItem(row, 1, new QTableWidgetItem(fields[1])); // Slot Id
+            ui->tableWidget->setItem(row, 2, new QTableWidgetItem(fields[2])); // Patient Name
+            ui->tableWidget->setItem(row, 3, new QTableWidgetItem(fields[3])); // Contact Number
+            ui->tableWidget->setItem(row, 4, new QTableWidgetItem(fields[5])); // Status
         }
     }
 
     file.close();
 }
 
-
 void DoctorWindow::on_deleteAppointmentButton_clicked()
 {
-    // Get the selected row
     int row = ui->tableWidget->currentRow();
-    if (row == -1) return; // No selection
+    if (row < 0) {
+        QMessageBox::warning(this, "Cancel Appointment", "Please select an appointment to cancel.");
+        return;
+    }
 
-    // Get the Slot Id from the selected row
-    QString slotId = ui->tableWidget->item(row, 0)->text();
-    QString patientName = ui->tableWidget->item(row, 1)->text();
-    QString contactNumber = ui->tableWidget->item(row, 2)->text();
+    QMessageBox::StandardButton reply;
+    reply = QMessageBox::question(this, "Cancel Appointment", "Are you sure you want to Cancel this appointment?",
+                                  QMessageBox::Yes | QMessageBox::No);
+    if (reply == QMessageBox::No) {
+        return;
+    }
 
-    // Update the status to "Cancelled"
+    QString appId = ui->tableWidget->item(row, 0)->text();
+
     QFile file("appointments.txt");
-    if (!file.open(QIODevice::ReadWrite | QIODevice::Text)) {
-        qDebug() << "Failed to open file for reading and writing";
+    if (!file.open(QIODevice::ReadOnly | QIODevice::Text)) {
+        QMessageBox::warning(this, "Error", "Unable to open appointments file.");
         return;
     }
 
     QTextStream in(&file);
-    QStringList lines;
+    QStringList fileContent;
     while (!in.atEnd()) {
         QString line = in.readLine();
         QStringList fields = line.split(",");
-
-        if (fields.size() != 6) {
-            qDebug() << "Incorrect data format in file";
-            continue;
-        }
-
-        // Check if the appointment matches the selected row
-        if (fields[0] == slotId && fields[2] == patientName && fields[3] == contactNumber) {
-            fields[5] = "Cancelled"; // Update status
+        if (fields.size() == 6 && fields[0] == appId) {
+            fields[5] = "Canceled"; // Update the status to "Canceled"
             line = fields.join(",");
         }
-
-        lines << line;
+        fileContent.append(line);
     }
-
     file.close();
 
-    // Write the updated data back to the file
-    QFile outFile("appointments.txt");
-    if (!outFile.open(QIODevice::WriteOnly | QIODevice::Text)) {
-        qDebug() << "Failed to open file for writing";
+    if (!file.open(QIODevice::WriteOnly | QIODevice::Text | QIODevice::Truncate)) {
+        QMessageBox::warning(this, "Error", "Unable to open appointments file for writing.");
         return;
     }
 
-    QTextStream out(&outFile);
-    for (const QString &line : lines) {
+    QTextStream out(&file);
+    for (const QString& line : fileContent) {
         out << line << "\n";
     }
+    file.close();
 
-    outFile.close();
-
-    // Refresh the table
-    loadAppointmentsForDoctor();
+    loadAppointmentsForDoctor(); // Refresh the table
 }
